@@ -558,7 +558,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             <ShoppingBasket size={68} color={CHARCOAL} strokeWidth={1.8} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', position: 'relative', zIndex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
+            <div style={{ fontSize: 13, fontWeight: 500, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
               Shop all
               <br />
               categories
@@ -588,7 +588,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             <RewardsIcon size={74} color={REWARDS_TEAL} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', minWidth: 0, position: 'relative', zIndex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
+            <div style={{ fontSize: 13, fontWeight: 500, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
               Earn points
               <br />
               as you shop
