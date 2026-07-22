@@ -554,11 +554,11 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             overflow: 'hidden',
           }}
         >
-          <div style={{ position: 'absolute', top: -10, right: -10, opacity: 0.045, transform: 'rotate(-8deg)' }}>
-            <ShoppingBasket size={68} color={CHARCOAL} strokeWidth={1.8} />
+          <div style={{ position: 'absolute', top: -8, right: -8, opacity: 0.032, transform: 'rotate(-8deg)' }}>
+            <ShoppingBasket size={62} color={CHARCOAL} strokeWidth={1.8} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', position: 'relative', zIndex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 500, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
+            <div style={{ fontSize: 13, fontWeight: 800, color: '#262626', lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
               Shop all
               <br />
               categories
@@ -584,14 +584,14 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             overflow: 'hidden',
           }}
         >
-          <div style={{ position: 'absolute', top: -14, right: -18, opacity: 0.1, transform: 'rotate(-14deg)' }}>
-            <RewardsIcon size={74} color={REWARDS_TEAL} />
+          <div style={{ position: 'absolute', top: -12, right: -16, opacity: 0.075, transform: 'rotate(-14deg)' }}>
+            <RewardsIcon size={68} color={REWARDS_TEAL} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', minWidth: 0, position: 'relative', zIndex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 500, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
-              Earn points
+            <div style={{ fontSize: 13, fontWeight: 800, color: '#262626', lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
+              Explore
               <br />
-              as you shop
+              Ryman Rewards
             </div>
             <ChevronRight size={15} color={REWARDS_TEAL} strokeWidth={2.2} style={{ flexShrink: 0 }} />
           </div>
@@ -1409,7 +1409,7 @@ function PrintShopScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
         <div style={{ position: 'relative', zIndex: 2, padding: '32px 24px', width: '62%' }}>
           <h2 style={{ color: '#fff', fontSize: 26, fontWeight: 700, margin: '0 0 10px', lineHeight: 1.1 }}>Document<br />Printing</h2>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 13, margin: '0 0 20px', lineHeight: 1.4 }}>Print your documents from A4 to A0</p>
-          <button onClick={() => onNavigate('printyourdoc')} style={{ background: '#fff', color: CHARCOAL, border: 'none', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Get started</button>
+          <button onClick={() => onNavigate('printyourdoc')} style={{ background: '#fff', color: CHARCOAL, border: 'none', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Print documents</button>
         </div>
         {/* Plain text document — behind */}
         <div style={{ position: 'absolute', right: 60, top: '50%', transform: 'translateY(-57%) rotate(-6deg)', width: 100, height: 138, background: '#fff', borderRadius: 3, boxShadow: '0 6px 20px rgba(0,0,0,0.45)', zIndex: 1, padding: '10px 8px', boxSizing: 'border-box' }}>
@@ -1441,7 +1441,7 @@ function PrintShopScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
         <div style={{ position: 'relative', zIndex: 2, padding: '32px 24px', width: '62%' }}>
           <h2 style={{ color: '#fff', fontSize: 26, fontWeight: 700, margin: '0 0 10px', lineHeight: 1.1 }}>Poster<br />Printing</h2>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 13, margin: '0 0 20px', lineHeight: 1.4 }}>Vibrant, high quality posters and signs</p>
-          <button onClick={() => onNavigate('posterprinting')} style={{ background: '#fff', color: CHARCOAL, border: 'none', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Get started</button>
+          <button onClick={() => onNavigate('posterprinting')} style={{ background: '#fff', color: CHARCOAL, border: 'none', borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Print posters</button>
         </div>
         {/* Two portrait posters */}
         <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=180&h=260&fit=crop&auto=format"
@@ -1451,7 +1451,7 @@ function PrintShopScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
       </div>
 
       {/* Shared how-it-works */}
-      <div style={{ padding: '10px 24px 12px', borderBottom: `1px solid ${MID_GREY}` }}>
+      <div style={{ padding: '22px 24px 12px', borderBottom: `1px solid ${MID_GREY}` }}>
         <h3 style={{ fontSize: 15, fontWeight: 800, color: CHARCOAL, margin: '0 0 12px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5 }}>How it works</h3>
         <div style={{ display: 'flex' }}>
           {['Choose your options', 'Upload your files', 'Collect in-store today'].map((step, i) => (
