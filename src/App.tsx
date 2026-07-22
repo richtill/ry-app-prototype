@@ -35,6 +35,9 @@ import storeImg from '@/imports/Untitled-1.jpg'
 import rewardsIcon from '@/imports/customer-club_star_new.png'
 import schoolBannerImg from '@/imports/School_banner.webp'
 
+declare const __APP_VERSION__: string
+declare const __APP_BUILD__: string
+
 // ── Types ─────────────────────────────────────────────────────────────────
 type Screen =
   | 'home'
@@ -62,6 +65,7 @@ const LIGHT_GREY = '#F5F5F5'
 const MID_GREY = '#e8e8e8'
 const TEXT_GREY = '#666'
 const CTA_GREY = '#68717a'
+const BUILD_LABEL = `Prototype v${__APP_VERSION__} · ${__APP_BUILD__}`
 const TAB_BAR_HEIGHT = 58
 const CARD_RADIUS = 14
 const CARD_BORDER = `1px solid ${MID_GREY}`
@@ -3546,50 +3550,54 @@ export default function App() {
         : screen
 
   return (
-    <div className="app-shell" style={{ width: '100%', maxWidth: 430, margin: '0 auto', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', minHeight: '100vh', background: '#fff', position: 'relative', display: 'flex', flexDirection: 'column' }}>
-      <Header
-        onMenu={!showBack ? () => setNavOpen(true) : undefined}
-        onBack={showBack ? goBack : undefined}
-        onHome={() => { setScreen('home'); setCheckoutOpen(false) }}
-        onBasket={openBasket}
-        basketCount={basketCount}
-      />
+    <>
+      <div className="app-shell" style={{ width: '100%', maxWidth: 430, margin: '0 auto', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', minHeight: '100vh', background: '#fff', position: 'relative', display: 'flex', flexDirection: 'column' }}>
+        <Header
+          onMenu={!showBack ? () => setNavOpen(true) : undefined}
+          onBack={showBack ? goBack : undefined}
+          onHome={() => { setScreen('home'); setCheckoutOpen(false) }}
+          onBasket={openBasket}
+          basketCount={basketCount}
+        />
 
-      <main className="app-main" style={{ overflowY: 'auto' }}>
-        {screen === 'home' && <HomeScreen onNavigate={navigate} />}
-        {screen === 'basket' && (
-          <BasketScreen
+        <main className="app-main" style={{ overflowY: 'auto' }}>
+          {screen === 'home' && <HomeScreen onNavigate={navigate} />}
+          {screen === 'basket' && (
+            <BasketScreen
+              items={basketItems}
+              onRemove={removeBasketItem}
+              useRewardsPoints={useRewardsPoints}
+              onToggleRewardsPoints={() => setUseRewardsPoints(value => !value)}
+              onCheckout={() => setCheckoutOpen(true)}
+            />
+          )}
+          {screen === 'greetingcards' && <GreetingCardsScreen onNavigate={navigate} />}
+          {screen === 'printshop' && <PrintShopScreen onNavigate={navigate} />}
+          {screen === 'printyourdoc' && <PrintYourDocScreen />}
+          {screen === 'posterprinting' && <PosterPrintingScreen />}
+          {screen === 'storefinder' && <StoreFinderScreen />}
+          {screen === 'shop' && <ShopScreen onNavigate={navigate} onOpenCategory={openCategoryLanding} />}
+          {screen === 'categorylanding' && <CategoryLandingScreen title={categoryLanding.title} heroImg={categoryLanding.heroImg} onNavigate={navigate} />}
+          {screen === 'plp' && <PLPScreen onNavigate={navigate} title={categoryLanding.title} />}
+          {screen === 'cardsplp' && <GreetingCardsPLPScreen onNavigate={navigate} />}
+          {screen === 'rewards' && <RewardsScreen />}
+          {screen === 'pdp' && <PDPScreen />}
+          {screen === 'cardpdp' && <GreetingCardPDPScreen />}
+        </main>
+
+        <TabBar active={tabBarActive} onChange={navigate} />
+
+        {navOpen && <NavDrawer onClose={() => setNavOpen(false)} onNavigate={navigate} />}
+        {screen === 'basket' && checkoutOpen && (
+          <CheckoutOverlay
             items={basketItems}
-            onRemove={removeBasketItem}
             useRewardsPoints={useRewardsPoints}
-            onToggleRewardsPoints={() => setUseRewardsPoints(value => !value)}
-            onCheckout={() => setCheckoutOpen(true)}
+            onClose={() => setCheckoutOpen(false)}
           />
         )}
-        {screen === 'greetingcards' && <GreetingCardsScreen onNavigate={navigate} />}
-        {screen === 'printshop' && <PrintShopScreen onNavigate={navigate} />}
-        {screen === 'printyourdoc' && <PrintYourDocScreen />}
-        {screen === 'posterprinting' && <PosterPrintingScreen />}
-        {screen === 'storefinder' && <StoreFinderScreen />}
-        {screen === 'shop' && <ShopScreen onNavigate={navigate} onOpenCategory={openCategoryLanding} />}
-        {screen === 'categorylanding' && <CategoryLandingScreen title={categoryLanding.title} heroImg={categoryLanding.heroImg} onNavigate={navigate} />}
-        {screen === 'plp' && <PLPScreen onNavigate={navigate} title={categoryLanding.title} />}
-        {screen === 'cardsplp' && <GreetingCardsPLPScreen onNavigate={navigate} />}
-        {screen === 'rewards' && <RewardsScreen />}
-        {screen === 'pdp' && <PDPScreen />}
-        {screen === 'cardpdp' && <GreetingCardPDPScreen />}
-      </main>
+      </div>
 
-      <TabBar active={tabBarActive} onChange={navigate} />
-
-      {navOpen && <NavDrawer onClose={() => setNavOpen(false)} onNavigate={navigate} />}
-      {screen === 'basket' && checkoutOpen && (
-        <CheckoutOverlay
-          items={basketItems}
-          useRewardsPoints={useRewardsPoints}
-          onClose={() => setCheckoutOpen(false)}
-        />
-      )}
-    </div>
+      <div className="prototype-build-label">{BUILD_LABEL}</div>
+    </>
   )
 }
