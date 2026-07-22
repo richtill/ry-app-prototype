@@ -521,7 +521,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             <button
               onClick={() => onNavigate('plp')}
               style={{
-                background: GREEN,
+                background: RED,
                 color: '#fff',
                 border: 'none',
                 padding: '9px 18px',
@@ -610,7 +610,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
               Collect In-Store<br />
               in <span style={{ fontSize: 26, lineHeight: 0.95 }}>60</span> minutes
             </div>
-            <div style={{ background: GREEN, color: '#fff', display: 'inline-block', padding: '9px 18px', borderRadius: 4, fontSize: 13, fontWeight: 700 }}>From £2.99</div>
+            <div style={{ background: RED, color: '#fff', display: 'inline-block', padding: '9px 18px', borderRadius: 4, fontSize: 13, fontWeight: 700 }}>Create a card</div>
           </div>
           <div style={{ width: 196, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <img src={cardsBannerImg} alt="Cards" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -975,7 +975,7 @@ function StorePickupOverlay({
               }}
               style={{
                 width: '100%',
-                background: GREEN,
+                background: RED,
                 color: '#fff',
                 border: 'none',
                 borderRadius: 4,
@@ -1917,7 +1917,7 @@ function ShopScreen({
             <button
               onClick={() => onNavigate('plp')}
               style={{
-                background: GREEN,
+                background: RED,
                 color: '#fff',
                 border: 'none',
                 padding: '9px 18px',
