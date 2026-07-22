@@ -298,12 +298,12 @@ function TabBar({ active, onChange }: { active: string; onChange: (s: Screen) =>
               flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
               gap: 3, padding: '10px 0 8px', border: 'none', background: 'none',
               cursor: 'pointer',
-              color: isActive ? (t.id === 'rewards' ? REWARDS_TEAL : RED) : '#999',
+              color: isActive ? (t.id === 'rewards' ? REWARDS_TEAL : RED) : '#878787',
               transition: 'color 0.15s',
             }}
           >
             {t.id === 'rewards' ? (
-              <RewardsIcon size={22} color={REWARDS_TEAL} opacity={isActive ? 1 : 0.55} />
+              <RewardsIcon size={22} color={REWARDS_TEAL} opacity={isActive ? 1 : 0.68} />
             ) : t.icon}
             <span style={{ fontSize: 10, fontWeight: isActive ? 700 : 500, letterSpacing: '0.2px' }}>{t.label}</span>
           </button>
@@ -521,7 +521,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             <button
               onClick={() => onNavigate('plp')}
               style={{
-                background: RED,
+                background: GREEN,
                 color: '#fff',
                 border: 'none',
                 padding: '9px 18px',
@@ -530,7 +530,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
                 cursor: 'pointer',
               }}
             >
-              Shop now
+              Shop Now
             </button>
           </div>
         </div>
@@ -610,7 +610,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
               Collect In-Store<br />
               in <span style={{ fontSize: 26, lineHeight: 0.95 }}>60</span> minutes
             </div>
-            <div style={{ background: RED, color: '#fff', display: 'inline-block', padding: '9px 18px', borderRadius: 8, fontSize: 13, fontWeight: 700 }}>From £2.99</div>
+            <div style={{ background: GREEN, color: '#fff', display: 'inline-block', padding: '9px 18px', borderRadius: 4, fontSize: 13, fontWeight: 700 }}>From £2.99</div>
           </div>
           <div style={{ width: 196, overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <img src={cardsBannerImg} alt="Cards" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -623,7 +623,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
         <div style={{ position: 'relative', zIndex: 2, padding: '36px 24px', width: '60%' }}>
           <h2 style={{ color: '#fff', fontSize: 24, fontWeight: 900, margin: '0 0 6px', lineHeight: 1.1 }}>Print Shop</h2>
           <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: 12, margin: '0 0 16px' }}>Collect in-store in as little as 60 mins*</p>
-          <div style={{ display: 'inline-block', background: '#fff', color: CHARCOAL, borderRadius: 8, padding: '9px 18px', fontSize: 13, fontWeight: 800 }}>Order Now</div>
+          <div style={{ display: 'inline-block', background: '#fff', color: CHARCOAL, borderRadius: 4, padding: '9px 18px', fontSize: 13, fontWeight: 800 }}>Get Started</div>
         </div>
         {/* Poster image — behind */}
         <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=180&h=260&fit=crop&auto=format"
@@ -1917,7 +1917,7 @@ function ShopScreen({
             <button
               onClick={() => onNavigate('plp')}
               style={{
-                background: RED,
+                background: GREEN,
                 color: '#fff',
                 border: 'none',
                 padding: '9px 18px',
@@ -1926,7 +1926,7 @@ function ShopScreen({
                 cursor: 'pointer',
               }}
             >
-              Shop now
+              Shop Now
             </button>
           </div>
         </div>
@@ -2194,15 +2194,21 @@ function QuantityStepper({
 
 function PLPScreen({
   onNavigate,
+  title = 'Stationery',
   items = products,
   productTarget = 'pdp',
 }: {
   onNavigate: (s: Screen) => void
+  title?: string
   items?: ProductCardItem[]
   productTarget?: Screen
 }) {
   return (
     <div style={{ background: LIGHT_GREY, paddingBottom: 80 }}>
+      <div style={{ background: '#fff', padding: '16px 16px 12px', borderBottom: `1px solid ${MID_GREY}` }}>
+        <h1 style={{ fontSize: 24, fontWeight: 800, color: CHARCOAL, lineHeight: 1.1, margin: 0 }}>{title}</h1>
+      </div>
+
       {/* Filter bar */}
       <div style={{ background: '#fff', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: `1px solid ${MID_GREY}` }}>
         <span style={{ fontSize: 13, color: TEXT_GREY, fontWeight: 600 }}>{items.length} products</span>
@@ -2266,7 +2272,7 @@ function PLPScreen({
 }
 
 function GreetingCardsPLPScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
-  return <PLPScreen onNavigate={onNavigate} items={greetingCardProducts} productTarget="cardpdp" />
+  return <PLPScreen onNavigate={onNavigate} title="Greeting Cards" items={greetingCardProducts} productTarget="cardpdp" />
 }
 
 function BasketScreen({
@@ -2634,7 +2640,7 @@ function CheckoutOverlay({
                     width: '100%',
                     border: 'none',
                     borderRadius: 4,
-                    background: CHARCOAL,
+                    background: CTA_GREY,
                     color: '#fff',
                     padding: '14px 16px',
                     fontSize: 15,
@@ -2918,7 +2924,7 @@ function CheckoutOverlay({
                         cursor: 'pointer',
                       }}
                     >
-                      Submit
+                      Place Order
                     </button>
                   </>
                 )}
@@ -3567,7 +3573,7 @@ export default function App() {
         {screen === 'storefinder' && <StoreFinderScreen />}
         {screen === 'shop' && <ShopScreen onNavigate={navigate} onOpenCategory={openCategoryLanding} />}
         {screen === 'categorylanding' && <CategoryLandingScreen title={categoryLanding.title} heroImg={categoryLanding.heroImg} onNavigate={navigate} />}
-        {screen === 'plp' && <PLPScreen onNavigate={navigate} />}
+        {screen === 'plp' && <PLPScreen onNavigate={navigate} title={categoryLanding.title} />}
         {screen === 'cardsplp' && <GreetingCardsPLPScreen onNavigate={navigate} />}
         {screen === 'rewards' && <RewardsScreen />}
         {screen === 'pdp' && <PDPScreen />}
