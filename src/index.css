@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700;800;900&display=swap');
+@import 'tailwindcss';
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+}
+
+button, h1, h2, h3, h4, h5, h6 {
+  font-family: "Encode Sans", "Arial", "Helvetica", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+button:not([data-no-radius='true']) {
+  border-radius: 4px !important;
+}
+
+[style*='"Encode Sans"'] {
+  letter-spacing: 0.02em;
+}

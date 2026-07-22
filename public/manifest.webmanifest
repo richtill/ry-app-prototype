@@ -1,0 +1,10 @@
+{
+  "name": "Ryman",
+  "short_name": "Ryman",
+  "description": "A refreshed mobile shopping experience for Ryman.",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
