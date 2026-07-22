@@ -19,25 +19,27 @@ body {
   min-height: 0;
 }
 
-@media (min-width: 391px) {
+@media (pointer: fine) {
   body {
     background: #000;
+    overflow: auto;
   }
 
   #root {
-    min-height: 100vh;
+    min-width: 454px;
+    min-height: 872px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 16px 0;
+    align-items: flex-start;
+    padding: 16px 24px;
     box-sizing: border-box;
   }
 
   .app-shell {
     width: 390px !important;
     max-width: 390px !important;
-    min-height: min(840px, calc(100vh - 32px)) !important;
-    height: min(840px, calc(100vh - 32px));
+    min-height: 840px !important;
+    height: 840px;
     overflow: hidden;
     border-radius: 28px;
     box-shadow:

@@ -4,9 +4,6 @@ import {
   ChevronDown, Home, BookOpen, Printer, Store, Star, Heart, Check,
   Truck, Package, MapPin, Plus, Minus, SlidersHorizontal, ShoppingBag, MousePointer2, Tag, Phone, Navigation
 } from 'lucide-react'
-import backToSchoolImg from '@/imports/BTS_2026_herobanner.webp'
-import diariesBannerImg from '@/imports/banner_diaries.jpg'
-import legamiBannerImg from '@/imports/banner_legami.jpg'
 import essentialStationeryImg from '@/imports/Essential_Stationery.webp'
 import premiumStationeryImg from '@/imports/Premium_Stationery.webp'
 import stationeryGiftsImg from '@/imports/Stationery_Gifts.webp'
@@ -506,37 +503,97 @@ function NavDrawer({ onClose, onNavigate }: { onClose: () => void; onNavigate: (
 // ── Home Screen ────────────────────────────────────────────────────────────
 function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
   return (
-    <div style={{ background: '#fff', paddingBottom: `calc(env(safe-area-inset-bottom, 0px) + ${TAB_BAR_HEIGHT + 10}px)` }}>
+    <div style={{ background: '#fff', paddingBottom: `calc(env(safe-area-inset-bottom, 0px) + ${TAB_BAR_HEIGHT}px)` }}>
       <SearchBar padding="10px 16px" />
 
-      {/* Hero Banner */}
-      <button
-        onClick={() => onNavigate('plp')}
-        style={{ position: 'relative', marginBottom: 3, border: 'none', cursor: 'pointer', padding: 0, display: 'block', width: '100%', background: '#fff' }}
-      >
-        <img src={backToSchoolImg} alt="Back to School Savings" style={{ display: 'block', width: '100%', height: 'auto' }} />
-      </button>
+      {/* Back to School Savings Promo */}
+      <div style={{ margin: '0', overflow: 'hidden', position: 'relative', height: 182, background: '#1a1a1a' }}>
+        <img src={schoolBannerImg} alt="Back to school" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.42) 42%, rgba(0,0,0,0.08) 74%, rgba(0,0,0,0) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, padding: '20px 22px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: '74%' }}>
+            <div style={{ color: '#fff', fontWeight: 900, fontSize: 25, lineHeight: 1.08, marginBottom: 10 }}>
+              Back to School<br />Savings
+            </div>
+            <div style={{ color: 'rgba(255,255,255,0.88)', fontSize: 12, lineHeight: 1.4, marginBottom: 16 }}>
+              Everything they need,<br />all in one place
+            </div>
+            <button
+              onClick={() => onNavigate('plp')}
+              style={{
+                background: RED,
+                color: '#fff',
+                border: 'none',
+                padding: '9px 18px',
+                fontSize: 12,
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
+            >
+              Shop now
+            </button>
+          </div>
+        </div>
+      </div>
 
-      {/* 2-col feature tiles */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 3, rowGap: 0, marginBottom: 3 }}>
-        <button data-no-radius="true" onClick={() => onNavigate('plp')} style={{ overflow: 'hidden', position: 'relative', height: 140, border: 'none', cursor: 'pointer', padding: 0 }}>
-          <img src={diariesBannerImg} alt="Diaries" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)' }} />
-          <div style={{ position: 'absolute', bottom: 10, left: 10, right: 10, display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-start', gap: 4, color: '#fff', fontSize: 13, fontWeight: 700 }}>
-            <span style={{ display: 'block', textAlign: 'left', lineHeight: 1.15 }}>
-              Academic Diaries
-            </span>
-            <ChevronRight size={14} strokeWidth={2.2} style={{ flexShrink: 0, marginBottom: 1 }} />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, marginBottom: 0 }}>
+        <button
+          onClick={() => onNavigate('shop')}
+          style={{
+            border: 'none',
+            background: 'linear-gradient(145deg, #f8fcff 0%, #edf7ff 58%, #dceefe 100%)',
+            minHeight: 52,
+            padding: '10px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            cursor: 'pointer',
+            borderRadius: 0,
+            borderTop: `1px solid ${MID_GREY}`,
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{ position: 'absolute', top: -10, right: -10, opacity: 0.045, transform: 'rotate(-8deg)' }}>
+            <ShoppingBasket size={68} color={CHARCOAL} strokeWidth={1.8} />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', position: 'relative', zIndex: 1 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
+              Shop all
+              <br />
+              categories
+            </div>
+            <ChevronRight size={15} color={CHARCOAL} strokeWidth={2.2} style={{ flexShrink: 0 }} />
           </div>
         </button>
-        <button data-no-radius="true" onClick={() => onNavigate('plp')} style={{ overflow: 'hidden', position: 'relative', height: 140, border: 'none', cursor: 'pointer', padding: 0 }}>
-          <img src={legamiBannerImg} alt="Back to School with Legami" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)' }} />
-          <div style={{ position: 'absolute', bottom: 10, left: 10, right: 10, display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-start', gap: 4, color: '#fff', fontSize: 13, fontWeight: 700 }}>
-            <span style={{ display: 'block', textAlign: 'left', lineHeight: 1.15 }}>
-              Back to School with Legami
-            </span>
-            <ChevronRight size={14} strokeWidth={2.2} style={{ flexShrink: 0, marginBottom: 1 }} />
+
+        <button
+          onClick={() => onNavigate('rewards')}
+          style={{
+            border: 'none',
+            background: 'linear-gradient(145deg, #ffffff 0%, #f1faf9 58%, #e5f2f0 100%)',
+            minHeight: 52,
+            padding: '10px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            cursor: 'pointer',
+            borderRadius: 0,
+            borderTop: `1px solid ${MID_GREY}`,
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{ position: 'absolute', top: -14, right: -18, opacity: 0.1, transform: 'rotate(-14deg)' }}>
+            <RewardsIcon size={74} color={REWARDS_TEAL} />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', minWidth: 0, position: 'relative', zIndex: 1 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: CHARCOAL, lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
+              Earn points
+              <br />
+              as you shop
+            </div>
+            <ChevronRight size={15} color={REWARDS_TEAL} strokeWidth={2.2} style={{ flexShrink: 0 }} />
           </div>
         </button>
       </div>
@@ -589,7 +646,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
       </div>
 
       {/* Find Your Local Store */}
-      <button data-no-radius="true" onClick={() => onNavigate('storefinder')} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', border: 'none', padding: '38px 24px', cursor: 'pointer', overflow: 'hidden', minHeight: 112 }}>
+      <button data-no-radius="true" onClick={() => onNavigate('storefinder')} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', border: 'none', padding: '26px 24px', cursor: 'pointer', overflow: 'hidden', minHeight: 92 }}>
         <img src={storeImg} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.58) saturate(0.9)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(216,10,0,0.58) 0%, rgba(216,10,0,0.2) 100%)' }} />
         <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -1198,6 +1255,55 @@ function GreetingCardsScreen({ onNavigate }: { onNavigate: (s: Screen) => void }
         </h1>
       </div>
 
+      <SearchBar placeholder="Search by design, theme, or category" padding="10px 16px" />
+
+      <div style={{ padding: '0 16px 4px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            columnGap: 12,
+            rowGap: 18,
+            paddingBottom: 6,
+          }}
+        >
+          {cardCategories.map(cat => (
+            <button
+              key={cat.label}
+              onClick={() => onNavigate('cardsplp')}
+              style={{
+                border: 'none',
+                background: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                textAlign: 'center',
+                overflow: 'hidden',
+                appearance: 'none',
+              }}
+            >
+              <div
+                style={{
+                  borderRadius: 10,
+                  overflow: 'hidden',
+                  marginBottom: 8,
+                  background: '#f7efe5',
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.07)',
+                }}
+              >
+                <img
+                  src={cat.img}
+                  alt={cat.label}
+                  style={{ display: 'block', width: '100%', aspectRatio: '1 / 1', objectFit: 'cover' }}
+                />
+              </div>
+              <div style={{ fontSize: 11.5, fontWeight: 700, color: CHARCOAL, lineHeight: 1.2 }}>
+                {cat.label}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div style={{ padding: '10px 16px 0' }}>
         <div
           style={{
@@ -1283,55 +1389,6 @@ function GreetingCardsScreen({ onNavigate }: { onNavigate: (s: Screen) => void }
           </div>
         </div>
       </div>
-
-      <SearchBar placeholder="Search by design, theme, or category" padding="10px 16px" />
-
-      <div style={{ padding: '0 16px 4px' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-            columnGap: 12,
-            rowGap: 18,
-            paddingBottom: 6,
-          }}
-        >
-          {cardCategories.map(cat => (
-            <button
-              key={cat.label}
-              onClick={() => onNavigate('cardsplp')}
-              style={{
-                border: 'none',
-                background: 'none',
-                cursor: 'pointer',
-                padding: 0,
-                textAlign: 'center',
-                overflow: 'hidden',
-                appearance: 'none',
-              }}
-            >
-              <div
-                style={{
-                  borderRadius: 10,
-                  overflow: 'hidden',
-                  marginBottom: 8,
-                  background: '#f7efe5',
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.07)',
-                }}
-              >
-                <img
-                  src={cat.img}
-                  alt={cat.label}
-                  style={{ display: 'block', width: '100%', aspectRatio: '1 / 1', objectFit: 'cover' }}
-                />
-              </div>
-              <div style={{ fontSize: 11.5, fontWeight: 700, color: CHARCOAL, lineHeight: 1.2 }}>
-                {cat.label}
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
     </div>
   )
 }
@@ -1345,20 +1402,6 @@ function PrintShopScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
         <h1 style={{ fontSize: 24, fontWeight: 900, color: CHARCOAL, margin: 0, lineHeight: 1.1 }}>
           Print Shop<br /><span style={{ color: RED }}>In as little as 60 mins*</span>
         </h1>
-      </div>
-
-      {/* Shared how-it-works */}
-      <div style={{ padding: '10px 24px 12px', borderBottom: `1px solid ${MID_GREY}` }}>
-        <h3 style={{ fontSize: 15, fontWeight: 800, color: CHARCOAL, margin: '0 0 12px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5 }}>How it works</h3>
-        <div style={{ display: 'flex' }}>
-          {['Choose your options', 'Upload your files', 'Collect in-store today'].map((step, i) => (
-            <div key={step} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, position: 'relative' }}>
-              {i < 2 && <div style={{ position: 'absolute', top: 14, left: '50%', right: '-50%', height: 2, background: MID_GREY, zIndex: 0 }} />}
-              <div style={{ width: 28, height: 28, borderRadius: '50%', background: RED, color: '#fff', fontSize: 13, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1 }}>{i + 1}</div>
-              <span style={{ fontSize: 12, color: TEXT_GREY, textAlign: 'center', lineHeight: 1.25, maxWidth: 72 }}>{step}</span>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Document Printing */}
@@ -1405,6 +1448,20 @@ function PrintShopScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
           alt="" style={{ position: 'absolute', right: 60, top: '50%', transform: 'translateY(-50%) rotate(-6deg)', width: 100, height: 150, objectFit: 'cover', borderRadius: 5, boxShadow: '0 6px 18px rgba(0,0,0,0.4)', zIndex: 1 }} />
         <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=180&h=260&fit=crop&auto=format"
           alt="" style={{ position: 'absolute', right: -20, top: '50%', transform: 'translateY(-50%) rotate(5deg)', width: 100, height: 155, objectFit: 'cover', borderRadius: 5, boxShadow: '0 8px 22px rgba(0,0,0,0.5)', zIndex: 2 }} />
+      </div>
+
+      {/* Shared how-it-works */}
+      <div style={{ padding: '10px 24px 12px', borderBottom: `1px solid ${MID_GREY}` }}>
+        <h3 style={{ fontSize: 15, fontWeight: 800, color: CHARCOAL, margin: '0 0 12px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5 }}>How it works</h3>
+        <div style={{ display: 'flex' }}>
+          {['Choose your options', 'Upload your files', 'Collect in-store today'].map((step, i) => (
+            <div key={step} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, position: 'relative' }}>
+              {i < 2 && <div style={{ position: 'absolute', top: 14, left: '50%', right: '-50%', height: 2, background: MID_GREY, zIndex: 0 }} />}
+              <div style={{ width: 28, height: 28, borderRadius: '50%', background: RED, color: '#fff', fontSize: 13, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1 }}>{i + 1}</div>
+              <span style={{ fontSize: 12, color: TEXT_GREY, textAlign: 'center', lineHeight: 1.25, maxWidth: 72 }}>{step}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <p style={{ fontSize: 11, color: TEXT_GREY, padding: '12px 24px 4px', margin: 0 }}>*all print orders are subject to a £2.50 service charge</p>
@@ -1848,7 +1905,7 @@ function ShopScreen({
       {/* Promo Banner */}
       <div style={{ margin: '0 0 12px', overflow: 'hidden', position: 'relative', height: 182, background: '#1a1a1a' }}>
         <img src={schoolBannerImg} alt="Back to school" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.84) 0%, rgba(0,0,0,0.56) 42%, rgba(0,0,0,0.12) 74%, rgba(0,0,0,0) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.42) 42%, rgba(0,0,0,0.08) 74%, rgba(0,0,0,0) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, padding: '20px 22px', display: 'flex', alignItems: 'center' }}>
           <div style={{ width: '74%' }}>
             <div style={{ color: '#fff', fontWeight: 900, fontSize: 25, lineHeight: 1.08, marginBottom: 10 }}>
