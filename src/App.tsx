@@ -325,7 +325,7 @@ function NavDrawer({ onClose, onNavigate }: { onClose: () => void; onNavigate: (
     children: string[]
   } | null>(null)
   const sections = [
-    { label: 'Invitations', screen: 'greetingcards' as Screen },
+    { label: 'Invitations', screen: 'plp' as Screen },
     { label: 'Arts & Crafts', screen: 'plp' as Screen },
     { label: 'School Supplies', screen: 'plp' as Screen },
   ]
@@ -347,10 +347,12 @@ function NavDrawer({ onClose, onNavigate }: { onClose: () => void; onNavigate: (
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 100 }}>
       <div onClick={onClose} style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)' }} />
-      <div style={{
-        position: 'absolute', top: 0, left: 0, bottom: 0, width: '85%', maxWidth: 320,
-        background: '#fff', overflowY: 'auto', display: 'flex', flexDirection: 'column',
-      }}>
+      <div style={{ position: 'absolute', inset: 0, display: 'flex', justifyContent: 'center' }}>
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <div style={{
+            position: 'absolute', top: 0, left: 0, bottom: 0, width: '85%', maxWidth: 320,
+            background: '#fff', overflowY: 'auto', display: 'flex', flexDirection: 'column',
+          }}>
         <button
           onClick={onClose}
           style={{
@@ -494,6 +496,8 @@ function NavDrawer({ onClose, onNavigate }: { onClose: () => void; onNavigate: (
             </div>
           </div>
         )}
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -659,7 +663,7 @@ function StoreFinderOverlay({ onClose }: { onClose: () => void }) {
           transform: 'translateX(-50%)',
           top: 'calc(env(safe-area-inset-top, 0px) + 72px)',
           bottom: 0,
-          width: 'min(100vw, 430px)',
+          width: '100%',
           background: LIGHT_GREY,
           borderRadius: '28px 28px 0 0',
           boxShadow: '0 -10px 28px rgba(0,0,0,0.18)',
@@ -808,7 +812,7 @@ function StorePickupOverlay({
           transform: 'translateX(-50%)',
           top: 'calc(env(safe-area-inset-top, 0px) + 72px)',
           bottom: 0,
-          width: 'min(100vw, 430px)',
+          width: '100%',
           background: LIGHT_GREY,
           borderRadius: '28px 28px 0 0',
           boxShadow: '0 -10px 28px rgba(0,0,0,0.18)',
@@ -1524,10 +1528,10 @@ function DeliveryOptionsCard({
             })}
           </div>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
-            <div style={{ display: 'flex', gap: 14, flex: 1, alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', alignItems: 'center', gap: 12 }}>
+            <div style={{ display: 'flex', gap: 12, minWidth: 0, alignItems: 'center' }}>
               <div style={{ width: 18, height: 18, borderRadius: '50%', border: '2px solid #c8ced6', background: '#fff', flexShrink: 0 }} />
-              <div>
+              <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 13, fontWeight: 800, color: CHARCOAL, lineHeight: 1.25 }}>{collectLabel}</div>
                 {selectedStore?.status === 'in' && (
                   <div style={{ fontSize: 12, color: TEXT_GREY, marginTop: 2, lineHeight: 1.35 }}>
@@ -1545,12 +1549,13 @@ function DeliveryOptionsCard({
                 background: '#f3f3f3',
                 border: 'none',
                 borderRadius: 10,
-                padding: '13px 16px',
-                fontSize: 13,
+                padding: '13px 12px',
+                fontSize: 12.5,
                 fontWeight: 600,
                 color: RED,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
+                flexShrink: 0,
               }}
             >
               <MapPin size={13} color={RED} />
@@ -2228,7 +2233,7 @@ function BasketScreen({
 
   return (
     <div style={{ background: LIGHT_GREY, minHeight: '100%', padding: '18px 16px calc(env(safe-area-inset-bottom, 0px) + 88px)' }}>
-      <h1 style={{ fontSize: 28, fontWeight: 900, color: CHARCOAL, lineHeight: 1.02, margin: '0 0 16px' }}>Basket</h1>
+      <h1 style={{ fontSize: 28, fontWeight: 900, color: '#000', lineHeight: 1.02, margin: '0 0 16px' }}>Basket</h1>
 
       {items.length ? (
         <>
@@ -2440,7 +2445,7 @@ function CheckoutOverlay({
           transform: 'translateX(-50%)',
           top: 'calc(env(safe-area-inset-top, 0px) + 72px)',
           bottom: 0,
-          width: 'min(100vw, 430px)',
+          width: '100%',
           background: LIGHT_GREY,
           borderRadius: '28px 28px 0 0',
           boxShadow: '0 -10px 28px rgba(0,0,0,0.18)',
@@ -3478,7 +3483,7 @@ export default function App() {
         : screen
 
   return (
-    <div style={{ maxWidth: 430, margin: '0 auto', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', minHeight: '100vh', background: '#fff', position: 'relative' }}>
+    <div className="app-shell" style={{ width: '100%', maxWidth: 430, margin: '0 auto', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', minHeight: '100vh', background: '#fff', position: 'relative', display: 'flex', flexDirection: 'column' }}>
       <Header
         onMenu={!showBack ? () => setNavOpen(true) : undefined}
         onBack={showBack ? goBack : undefined}
@@ -3487,7 +3492,7 @@ export default function App() {
         basketCount={basketCount}
       />
 
-      <main style={{ overflowY: 'auto' }}>
+      <main className="app-main" style={{ overflowY: 'auto' }}>
         {screen === 'home' && <HomeScreen onNavigate={navigate} />}
         {screen === 'basket' && (
           <BasketScreen
