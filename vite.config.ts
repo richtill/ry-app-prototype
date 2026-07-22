@@ -11,7 +11,7 @@ import packageJson from './package.json'
 export default defineConfig(({ mode }) => {
   // .figma/make/deploy-preview passes `--mode development` for cached-preview builds.
   const emitSourcemaps = mode === 'development'
-  const appVersion = packageJson.version ?? '0.0.0'
+  const [major = '1', minor = '0'] = (packageJson.version ?? '1.0.0').split('.')
 
   let appBuild = process.env.COMMIT_REF?.slice(0, 7) ?? ''
   if (!appBuild) {
@@ -22,6 +22,21 @@ export default defineConfig(({ mode }) => {
     }
   }
 
+  let appRevision = ''
+  try {
+    appRevision = execSync('git rev-list --count HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim()
+  } catch {
+    appRevision = Date.now().toString().slice(-4)
+  }
+
+  const appVersion = `${major}.${minor}.${appRevision}`
+  const appBuildDate = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date())
+
   return {
     base: process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/',
     build: {
@@ -31,6 +46,7 @@ export default defineConfig(({ mode }) => {
     define: {
       __APP_VERSION__: JSON.stringify(appVersion),
       __APP_BUILD__: JSON.stringify(appBuild),
+      __APP_BUILD_DATE__: JSON.stringify(appBuildDate),
     },
     plugins: [
       react(),

@@ -37,6 +37,7 @@ import schoolBannerImg from '@/imports/School_banner.webp'
 
 declare const __APP_VERSION__: string
 declare const __APP_BUILD__: string
+declare const __APP_BUILD_DATE__: string
 
 // ── Types ─────────────────────────────────────────────────────────────────
 type Screen =
@@ -65,7 +66,7 @@ const LIGHT_GREY = '#F5F5F5'
 const MID_GREY = '#e8e8e8'
 const TEXT_GREY = '#666'
 const CTA_GREY = '#68717a'
-const BUILD_LABEL = `Prototype v${__APP_VERSION__} · ${__APP_BUILD__}`
+const BUILD_LABEL = `Prototype v${__APP_VERSION__} · build ${__APP_BUILD__} · ${__APP_BUILD_DATE__}`
 const TAB_BAR_HEIGHT = 58
 const CARD_RADIUS = 14
 const CARD_BORDER = `1px solid ${MID_GREY}`
@@ -2209,7 +2210,7 @@ function PLPScreen({
 }) {
   return (
     <div style={{ background: LIGHT_GREY, paddingBottom: 80 }}>
-      <div style={{ background: '#fff', padding: '16px 16px 12px', borderBottom: `1px solid ${MID_GREY}` }}>
+      <div style={{ background: LIGHT_GREY, padding: '16px 24px 12px', borderBottom: `1px solid ${MID_GREY}` }}>
         <h1 style={{ fontSize: 24, fontWeight: 800, color: CHARCOAL, lineHeight: 1.1, margin: 0 }}>{title}</h1>
       </div>
 
