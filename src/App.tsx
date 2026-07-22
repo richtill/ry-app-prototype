@@ -2254,7 +2254,7 @@ function PLPScreen({
               <button onClick={() => onNavigate(productTarget)} style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }}>
                 <p style={{ fontSize: 12, color: CHARCOAL, margin: '0 0 4px', lineHeight: 1.3, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif', fontWeight: 400 }}>{p.name}</p>
               </button>
-              <div style={{ marginBottom: 4 }}>
+              <div style={{ marginTop: 'auto', marginBottom: 4 }}>
                 {p.wasPrice && (
                   <div style={{ fontSize: 11, color: TEXT_GREY, marginBottom: 1, lineHeight: 1.2 }}>
                     Was <span style={{ textDecoration: 'line-through' }}>£{p.wasPrice.toFixed(2)}</span> Save £{(p.wasPrice - p.price).toFixed(2)}
