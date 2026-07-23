@@ -546,7 +546,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
           onClick={() => onNavigate('shop')}
           style={{
             border: 'none',
-            background: 'linear-gradient(145deg, #f8fcff 0%, #edf7ff 58%, #dceefe 100%)',
+            background: 'linear-gradient(145deg, #e1f1fb 0%, #c9e3f7 58%, #b1d3ef 100%)',
             minHeight: 52,
             padding: '10px 24px',
             display: 'flex',
@@ -559,8 +559,8 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             overflow: 'hidden',
           }}
         >
-          <div style={{ position: 'absolute', top: -8, right: -8, opacity: 0.032, transform: 'rotate(-8deg)' }}>
-            <ShoppingBasket size={62} color={CHARCOAL} strokeWidth={1.8} />
+          <div style={{ position: 'absolute', top: -8, right: -8, opacity: 0.28, transform: 'rotate(-8deg)' }}>
+            <ShoppingBasket size={62} color="#ffffff" strokeWidth={1.8} />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', position: 'relative', zIndex: 1 }}>
             <div style={{ fontSize: 13, fontWeight: 800, color: '#262626', lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>
@@ -576,7 +576,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
           onClick={() => onNavigate('rewards')}
           style={{
             border: 'none',
-            background: 'linear-gradient(145deg, #ffffff 0%, #f1faf9 58%, #e5f2f0 100%)',
+            background: 'linear-gradient(145deg, #eef8f6 0%, #d6ebe7 58%, #bfded8 100%)',
             minHeight: 52,
             padding: '10px 24px',
             display: 'flex',
@@ -589,8 +589,8 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             overflow: 'hidden',
           }}
         >
-          <div style={{ position: 'absolute', top: -12, right: -16, opacity: 0.075, transform: 'rotate(-14deg)' }}>
-            <RewardsIcon size={68} color={REWARDS_TEAL} />
+          <div style={{ position: 'absolute', top: -12, right: -16, opacity: 0.24, transform: 'rotate(-14deg)' }}>
+            <RewardsIcon size={68} color="#7aa19b" />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, textAlign: 'left', minWidth: 0, position: 'relative', zIndex: 1 }}>
             <div style={{ fontSize: 13, fontWeight: 800, color: '#262626', lineHeight: 1.15, fontFamily: '"Encode Sans", "Arial", "Helvetica", sans-serif' }}>

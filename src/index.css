@@ -23,7 +23,7 @@ body {
   display: none;
 }
 
-@media (pointer: fine) {
+@media (min-width: 768px) {
   body {
     background: #000;
     overflow: auto;
